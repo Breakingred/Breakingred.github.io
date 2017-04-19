@@ -48,7 +48,7 @@
 <p>然而，这一份独一无二的文件存储在哪里？如何保证每次只有一名同事在对它进行编辑？能否自动记录每次编辑的内容？如果一次编辑出错了，能否回滚到编辑前的版本？            </p>
 <p>Linux 的创始人Linus 也面临同样的问题，世界各地的人都在为Linux 编写代码，如何管理这些代码？</p>
 <blockquote>
-<p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p>
+<p> 事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手    工方式合并代码！</p>
 </blockquote>
 <p>附录：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137402760310626208b4f695940a49e5348b689d095fc000" target="_blank" rel="external">Git的诞生</a></p>
 <h3 id="3-分布式版本控制系统：每个节点都是完整的版本库"><a href="#3-分布式版本控制系统：每个节点都是完整的版本库" class="headerlink" title="3. 分布式版本控制系统：每个节点都是完整的版本库"></a>3. 分布式版本控制系统：每个节点都是完整的版本库</h3><ul>
@@ -65,29 +65,39 @@
 <p>​</p>
 </li>
 </ul>
-<h3 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3. 安装Git"></a>3. 安装Git</h3><h3 id="4-创建版本库-repository"><a href="#4-创建版本库-repository" class="headerlink" title="4. 创建版本库 (repository)"></a>4. 创建版本库 (repository)</h3><blockquote>
+<h3 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3. 安装Git"></a>3. 安装Git</h3><h3 id="4-创建一个版本库-init-add-commit"><a href="#4-创建一个版本库-init-add-commit" class="headerlink" title="4. 创建一个版本库-init-add-commit"></a>4. 创建一个版本库-init-add-commit</h3><blockquote>
 <p>什么是版本库呢？版本库又名仓库，英文名<strong>repository</strong>，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
 </blockquote>
-<ol>
-<li><code>mkdir</code>创建一个空目录（选择已有文件的目录也可以）：</li>
-</ol>
+<ul>
+<li>4.1 <code>mkdir</code> 创建一个空目录（选择已有文件的目录也可以）：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir testgit</div><div class="line">$ cd testgit</div><div class="line">$ pwd</div></pre></td></tr></table></figure>
-<ol>
-<li><code>git init</code> 把目录变成Git 可以管理的仓库：</li>
-</ol>
+<ul>
+<li>4.2 <code>git init</code> 把目录变成Git 可以管理的仓库：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git init</div><div class="line">Initialized empty Git repository in /Users/breaking_red/testgit/.git/</div></pre></td></tr></table></figure>
-<p>可以看到testgit 目录下生成了隐藏文件夹.git，<code>ls -ah</code>可以查看隐藏文件</p>
+<p>可以看到testgit 目录下生成了隐藏文件夹.git，<code>ls -ah</code> 可以查看隐藏文件</p>
+<ul>
+<li>4.3 将文件添加至仓库：</li>
+</ul>
 <ol>
-<li><p>将文件添加至仓库：</p>
-<ol>
-<li>在<code>~/testgit</code>目录（或其子目录）下创建文件readme.txt， 将默认编码设置为UTF-8</li>
-<li>用<code>git add</code>告诉Git，将文件添加到仓库：</li>
-<li>用<code>git commit</code>告诉Git，将文件提交到仓库，<code>-m &quot;xxx&quot;</code>是对本次提交内容的说明：</li>
+<li>在 <code>~/testgit</code> 目录（或其子目录）下创建文件readme.txt， 将默认编码设置为UTF-8</li>
+<li>用 <code>git add</code> 告诉Git，将文件添加到仓库：</li>
+<li>用 <code>git commit</code> 告诉Git，将文件提交到仓库，<code>-m &quot;xxx&quot;</code> 是对本次提交内容的说明：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git commit -m &quot;wrote a readme file&quot;</div><div class="line">[master (root-commit) b4fc3a5] wrote a readme file</div><div class="line"> 1 file changed, 2 insertions(+)</div><div class="line"> create mode 100644 readme.txt</div></pre></td></tr></table></figure>
 <p><code>commit</code> 命令返回：更新1个文件，插入2行内容</p>
-<p>可以一次<code>commit</code>多个文件，即多次<code>add</code>一次<code>commit</code>：</p>
+<p>可以一次 <code>commit</code> 多个文件，即多次 <code>add</code> 一次 <code>commit</code> ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git add file1.txt</div><div class="line">$ git add file2.txt file3.txt</div><div class="line">$ git commit -m &quot;add 3 files&quot;</div></pre></td></tr></table></figure>
+<h3 id="5-哪些文件被修改过-status？修改了什么-diff？"><a href="#5-哪些文件被修改过-status？修改了什么-diff？" class="headerlink" title="5. 哪些文件被修改过-status？修改了什么-diff？"></a>5. 哪些文件被修改过-status？修改了什么-diff？</h3><p>修改 <code>readme.txt</code> 中的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software.</div></pre></td></tr></table></figure>
+<ul>
+<li><p>5.1 在 <code>~/testgit</code>  下运行 <code>git status</code> 查看仓库当前的状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes not staged for commit:</div><div class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</div><div class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</div><div class="line"></div><div class="line">	modified:   readme.txt</div><div class="line"></div><div class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-19</span><i class="fa fa-tag"></i><a href="/tags/Git/" title="Git" class="tag">Git </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/04/19/Git/,Echo,Git,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/18/Hello World/" title="Hello World" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<li><p>5.2 <code>git diff</code> 比较未提交至仓库的文件与已提交至仓库的文件的不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ git diff</div><div class="line">diff --git a/readme.txt b/readme.txt</div><div class="line">index d8036c1..013b5bc 100644</div><div class="line">--- a/readme.txt</div><div class="line">+++ b/readme.txt</div><div class="line">@@ -1,2 +1,2 @@</div><div class="line">-Git is a version control system.</div><div class="line">+Git is a distributed version control system.</div><div class="line"> Git is free software.</div><div class="line">\ No newline at end of file</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-19</span><i class="fa fa-tag"></i><a href="/tags/Git/" title="Git" class="tag">Git </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/04/19/Git/,Echo,Git,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/18/Hello World/" title="Hello World" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
