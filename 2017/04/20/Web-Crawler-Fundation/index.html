@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>Web Crawler Fundation · Echo</title><meta name="description" content="爬虫的工作原理一个理想的爬虫也许是这样工作的：
+
+输入一个已知的页面，从这个初始的「种子页面」开始，获取「种子页面」上的链接并存储至「待爬取」列表，按照某种顺序依次爬取「待爬取」列表，将已爬取的链接转至「已爬取」列表…看起来在理想状态下，爬虫似乎可以一直工作，不断发送HTTP请求爬取互联网上的所有页"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Web Crawler Fundation</a></h3></div><div class="post-content"><h3 id="爬虫的工作原理"><a href="#爬虫的工作原理" class="headerlink" title="爬虫的工作原理"></a>爬虫的工作原理</h3><p>一个理想的爬虫也许是这样工作的：</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/7f0488e9gy1fet03gskk4j21ea0bi3zs.jpg" alt=""></p>
+<p>输入一个已知的页面，从这个初始的「种子页面」开始，获取「种子页面」上的链接并存储至「待爬取」列表，按照某种顺序依次爬取「待爬取」列表，将已爬取的链接转至「已爬取」列表…看起来在理想状态下，爬虫似乎可以一直工作，不断发送HTTP请求爬取互联网上的所有页面。</p>
+<blockquote>
+<p> 爬虫的本质是模拟浏览器发送HTTP请求</p>
+</blockquote>
+<h3 id="爬虫学习路径"><a href="#爬虫学习路径" class="headerlink" title="爬虫学习路径"></a>爬虫学习路径</h3><p>选自<a href="https://www.zhihu.com/question/50015995" target="_blank" rel="external">知乎：如何入门Python爬虫</a></p>
+<p>针对爬虫的工作流程，即 <strong>发送请求</strong>–<strong>获得页面</strong>–<strong>解析页面</strong>–<strong>下载内容</strong>–<strong>储存内容</strong></p>
+<p>需要掌握的技能如下：</p>
+<ul>
+<li>了解网页基础知识，即爬虫工作的原理，发送一个HTTP请求时发生了什么<ul>
+<li>HTML语言的基础（<a href="">）</a></li>
+<li>网站发包和收包的概念（POST、GET）</li>
+<li>js基础用于理解动态网页</li>
+</ul>
+</li>
+<li>Python 基础<ul>
+<li><code>list</code> , <code>dict</code>：用于序列化爬取的东西</li>
+<li><code>if</code>：判断爬取过程中遇到的问题，如 str.find() 返回-1的情况</li>
+<li><code>while</code>：循环重复爬取过程</li>
+<li>文件读写操作：保存爬取的内容</li>
+<li>切片：对爬取内容进行分割生成</li>
+</ul>
+</li>
+<li>解析页面时用到的分析语言，字符编码处理，不同网站编码格式不同<ul>
+<li><a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="external">正则表达式</a></li>
+<li><a href="http://www.w3school.com.cn/xpath/" target="_blank" rel="external">XPATH</a>：高效的分析语言，掌握后基本不用正则</li>
+<li><a href="http://beautifulsoup.readthedocs.io/zh_CN/latest/" target="_blank" rel="external">BeautifulSoup</a>：据说是网页解析神器</li>
+</ul>
+</li>
+<li>熟悉Python适用于爬虫的模块<ul>
+<li><code>urllib</code></li>
+<li><code>urllib2</code></li>
+<li><code>requests</code>：可替代以上两个模块</li>
+</ul>
+</li>
+<li>学习一种框架<ul>
+<li>Scrapy</li>
+</ul>
+</li>
+<li>学习处理动态页面<ul>
+<li>selenium</li>
+<li>phantomJS</li>
+</ul>
+</li>
+<li>与反爬虫策略验证码作斗争</li>
+<li>数据库<ul>
+<li>mysql</li>
+<li>mongodb</li>
+<li>sqllite</li>
+</ul>
+</li>
+<li>数据分析，分析爬下来的数据<ul>
+<li>Numpy</li>
+<li>Pandas</li>
+</ul>
+</li>
+</ul>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-20</span><i class="fa fa-tag"></i><a href="/tags/Crawler/" title="Crawler" class="tag">Crawler </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/04/20/Web-Crawler-Fundation/,Echo,Web Crawler Fundation,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/19/Mac-Sill/" title="Mac Sill" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
