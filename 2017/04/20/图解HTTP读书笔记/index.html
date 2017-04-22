@@ -57,5 +57,14 @@ U"><meta name="keywords" content="Echo"><meta content="width=device-width, initi
 </li>
 </ul>
 <p>报文主体用于传输请求或响应的实体主体。</p>
-<p>一般的，报文主体即实体主体，只有在实体主体进行编码后传输时，两者不一致。</p>
+<p>一般的，报文主体即实体主体，只有在实体主体进行编码后传输时，两者不一致。实体内容的编码格式主要有：</p>
+<ul>
+<li>identity 不进行编码</li>
+<li>deflate (zlib)</li>
+<li>compress (UNIX 系统的标准压缩)</li>
+<li>gzip (GNU zip)</li>
+</ul>
+<h3 id="含有多类型实体的报文-多部分对象集合"><a href="#含有多类型实体的报文-多部分对象集合" class="headerlink" title="含有多类型实体的报文-多部分对象集合"></a>含有多类型实体的报文-多部分对象集合</h3><p>发送的一份报文主体内可能含有多种类型的实体，这时需要在首部字段里加上 Content-type，使用boundary 划分各类实体。</p>
+<h3 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h3><p>下载文件中断，可从中断部分继续下载，即指定下载的实体范围。</p>
+<h3 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h3><p>客户端与服务端进行“协商”，返回最适合的响应资源，协商的内容包括响应资源的语言、编码方式等，请求报文中特定的首部字段就是“协商”的标准。</p>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-20</span><i class="fa fa-tag"></i><a href="/tags/HTTP/" title="HTTP" class="tag">HTTP </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/04/20/图解HTTP读书笔记/,Echo,《图解HTTP》读书笔记,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/20/Web-Crawler-Fundation/" title="Web Crawler Fundation" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/04/21/urllib-function/" title="urllib function" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
