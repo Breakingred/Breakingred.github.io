@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>XPath · Echo</title><meta name="description" content="XPath用于XMLXPath是一门在XML中查找信息的语言。XPath 用于在 XML 文档中通过元素和属性使用路径表达式进行导航。
+XML是与HTML类似的可扩展标记语言HTML用于显示数据，焦点是数据的外观；
+XML用于存储和传输数据，焦点是数据的内容。
+XML的特点
+XML是纯文本，兼容性强"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>XPath</a></h3></div><div class="post-content"><h3 id="XPath用于XML"><a href="#XPath用于XML" class="headerlink" title="XPath用于XML"></a>XPath用于XML</h3><p>XPath是一门在XML中查找信息的语言。XPath 用于在 XML 文档中通过元素和属性使用路径表达式进行导航。</p>
+<h3 id="XML是与HTML类似的可扩展标记语言"><a href="#XML是与HTML类似的可扩展标记语言" class="headerlink" title="XML是与HTML类似的可扩展标记语言"></a>XML是与HTML类似的可扩展标记语言</h3><p>HTML用于显示数据，焦点是数据的外观；</p>
+<p>XML用于存储和传输数据，焦点是数据的内容。</p>
+<h3 id="XML的特点"><a href="#XML的特点" class="headerlink" title="XML的特点"></a>XML的特点</h3><ul>
+<li><p>XML是纯文本，兼容性强</p>
+</li>
+<li><p>HTML中的标签都是预定义的，如(p)等，XML是没有预定义标签的，作者定义自己的标签，如(to)(from)等，它具有自我描述性</p>
+</li>
+<li><p>XML把数据从HTML分离，独立于软件、硬件及应用程序</p>
+</li>
+<li><p>XML是一种树形结构，必须包含根元素</p>
+</li>
+<li><p>XML的属性值必须加引号</p>
+</li>
+<li><p>XML中用实体引用避免在实体中出现有特殊意义的符号如&lt;</p>
+</li>
+<li><p>不同于HTML，XML中的空格会被保留</p>
+</li>
+<li><p>回车符 (CR) 和换行符 (LF)</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">XML注释与HTML类似 &lt;!-- This is a comment --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p> XML 文档不会携带有关如何显示数据的信息。由于 XML 标签由 XML 文档的作者“发明”，浏览器无法确定像 <table> 这样一个标签究竟描述一个 HTML 表格还是一个餐桌。在没有任何有关如何显示数据的信息的情况下，大多数的浏览器都会仅仅把 XML 文档显示为源代码。在下面的章节，我们会了解几个有关这个显示问题的解决方案，其中会使用 CSS、XSL、JavaScript 以及 XML 数据岛</table></p>
+</blockquote>
+<h3 id="将XML样式化"><a href="#将XML样式化" class="headerlink" title="将XML样式化"></a>将XML样式化</h3><ul>
+<li>CSS样式表，不常用</li>
+<li>XSLT (eXtensible Stylesheet Language Transformations) （可扩展样式表语言转换）首选</li>
+</ul>
+<h3 id="XML命名空间"><a href="#XML命名空间" class="headerlink" title="XML命名空间"></a>XML命名空间</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;f:table xmlns:f=&quot;http://www.w3school.com.cn/furniture&quot;&gt;</div><div class="line">   &lt;f:name&gt;African Coffee Table&lt;/f:name&gt;</div><div class="line">   &lt;f:width&gt;80&lt;/f:width&gt;</div><div class="line">   &lt;f:length&gt;120&lt;/f:length&gt;</div><div class="line">&lt;/f:table&gt;</div></pre></td></tr></table></figure>
+<p>xmlns （XML namespace） 为前缀赋予了一个与某个命名空间相关联的限定名称，当命名空间被定义在元素的开始标签中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。即如下的语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlns:namespace-prefix=&quot;namespaceURI&quot;</div></pre></td></tr></table></figure>
+<p>有了命名空间XML得到大大的简化，让我们省去在所有的子元素中使用前缀的工作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;table xmlns=&quot;http://www.w3school.com.cn/furniture&quot;&gt;</div><div class="line">   &lt;name&gt;African Coffee Table&lt;/name&gt;</div><div class="line">   &lt;width&gt;80&lt;/width&gt;</div><div class="line">   &lt;length&gt;120&lt;/length&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="XSL-可扩展样式表语言实际上包含两个部分："><a href="#XSL-可扩展样式表语言实际上包含两个部分：" class="headerlink" title="XSL 可扩展样式表语言实际上包含两个部分："></a>XSL 可扩展样式表语言实际上包含两个部分：</h3><ul>
+<li>XSLT – 用于转换 XML 文档的语言</li>
+<li>XPath – 用于在 XML 文档中导航的语言</li>
+</ul>
+<p>XSLT 是指 XSL 转换 (XSL Transformation)，它是 XSL 最重要的部分。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-05-02</span><i class="fa fa-tag"></i><a href="/tags/Web/" title="Web" class="tag">Web </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/05/02/XPath/,Echo,XPath,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/28/re/" title="re" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
