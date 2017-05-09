@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>(译) Web API for non-programmers · Echo</title><meta name="description" content="原文：Web APIs for non-programmers 文章作于2013年，部分链接已失效，这里先不做修改。
+什么是API?API 全称为 Application Programming Interface，即应用程序编程接口，理解 API 的重点在于理解什么是Interface 即接口。
+"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>(译) Web API for non-programmers</a></h3></div><div class="post-content"><p><a href="https://schoolofdata.org/2013/11/18/web-apis-for-non-programmers/" target="_blank" rel="external">原文：Web APIs for non-programmers</a> 文章作于2013年，部分链接已失效，这里先不做修改。</p>
+<h2 id="什么是API"><a href="#什么是API" class="headerlink" title="什么是API?"></a>什么是API?</h2><p>API 全称为 <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface，即<strong>应用程序编程接口</strong>，理解 API 的重点在于理解什么是<strong>Interface</strong> 即接口。</p>
+<p>接口随处可见，电脑的操作系统是一个接口，电梯上的按键是一个接口，汽车的油表盘也是接口。</p>
+<p>接口运作在一个复杂系统的顶层（可以理解为是你最先接触到的应用层），它帮助我们简化特定的任务，它是一个出色的中介，将你从幕布后复杂的细节中解脱出来。Web API 就是这样工作的，比如Twitter 和Youtube 的接口，把你的行为转换为计算机系统可以理解的技术细节，帮助你简化工作。<br></p>
+<h2 id="什么是Web-API"><a href="#什么是Web-API" class="headerlink" title="什么是Web API?"></a>什么是Web API?</h2><p>Web API 有许多不同的种类，最常见的、非编程人员接触最多的叫做REST/ RESTful API。从现在起，我们讨论的Web API 默认为 REST API。</p>
+<p><strong>Web API 是通过URL 进行控制的接口。</strong>从这个角度来看，所有的Web 页面都是API。你通过浏览器发送一个URL <strong>request</strong> 即请求，Web 服务器通过请求进行一系列复杂的抉择，返回给你特定的内容即响应<strong>response</strong>。标准的Web API 有着相同的工作流程。</p>
+<p>普通的URL 与作为Web API 一部分的URL 最主要的区别是：普通的URL 返回一些精心设计过的页面在你的浏览器中展示；而<strong>Web API URL 返回的结果却是未经美化的没有特殊样式的，用于计算机工作而并非像用户展示。</strong></p>
+<p>当你在浏览器中发送 <code>http://twitter.com/</code> 请求，会返回一个有样式、图片、按键的页面，用户在浏览页面时喜闻乐见，然而如果你要从这个页面中获取并分析数据，一定会头疼不已。底层文件的结构是不连续的，你很难成块儿的获得数据；</p>
+<p>而当你发送Web API URL 请求时，你得到的是一个未经修饰的成块儿的纯文本文件：</p>
+<p><code>https://api.twitter.com/1.1/statuses/home_timeline.json</code></p>
+<p>这个纯文本文件是给电脑读取的，没有样式化很难看，然而你如果要抓取和分析数据十分方便。</p>
+<p><strong>使用Web API 是一种屏蔽你不在意的无用的视觉界面，专注于获取数据的好方式。</strong>从某种角度上来说，你可以把Web API 看做进行Web 服务器数据库的短链接。Twitter不会让你登陆他们的数据库（除非你在那里工作），但是Twitter 通过API 给你提供了一种有限制的特定的方式访问数据。<br></p>
+<h2 id="为什么想要使用Web-API"><a href="#为什么想要使用Web-API" class="headerlink" title="为什么想要使用Web API?"></a>为什么想要使用Web API?</h2><ol>
+<li><p><strong>获取原本需要大量时间才能得到的信息。</strong>大多数时候，你可以直接从页面上得到信息，你可以翻阅点击100 个页面并且把页面中你需要的信息复制粘贴到你本地的笔记本或表格里。不过如果你是一个程序员，你可以花费时间在分析页面结构上，写一个个性化的抓取程序来获得数据。API 就是一个可以快速获得数据，节省时间的神器。</p>
+<p>例如：你想要获得Flickr 上所有tag 为’maui’ 、用Nikon 相机拍摄于2012年、宽大于高的照片，你可以人工在Flickr 上搜索，一次点开一个结果，检查是不是你需要的并将符合条件的照片复制下来。这可能会花费你很多时间。如果你使用API 的话，你可以更精准的获得你想要的信息，不用一个一个点击，你就会得到一个包含一切信息的文本列表。</p>
+</li>
+<li><p><strong>得到不使用API 无法得到的信息。</strong>有时API 提供一些你无法直接从页面上获取到的信息，这些信息不在页面上显示可能是因为大部分的用户不在意这些信息。</p>
+<p>例如：Twitter 可能只在页面上展示一个特定日期以前的推文，不过你仍然可以通过API 获取这一日期之前的所有推文。烂番茄也可能提供展示在页面以外的额外的元数据。</p>
+</li>
+<li><p><strong>使用实时数据使自动化App 运行。</strong></p>
+<p>例如：你想要你的 “超级碗APP” 包括instagram 上实时的在场馆附近的照片。</p>
+</li>
+<li><p><strong>更加直接的使用接口为一个服务读写数据。</strong></p>
+<p>例如：你使用“MailChimp” 管理邮件列表，你希望在指定事件发生时，能够自动添加和已出列表成员，而不依赖于手工的操作。</p>
+</li>
+</ol>
+<p>理由<strong>1</strong> 和<strong>2</strong> 都是非程序员可以用于简化数据获取的很好的方法，理由<strong>3</strong> 和<strong>4</strong> 需要你有更多的编程技术支持。<br></p>
+<h2 id="那么，API-是怎么工作的？"><a href="#那么，API-是怎么工作的？" class="headerlink" title="那么，API 是怎么工作的？"></a>那么，API 是怎么工作的？</h2><h3 id="基础"><a href="#基础" class="headerlink" title="- 基础"></a>- 基础</h3><p>首先，你需要知道你需要的数据是不是可以通过API 获得。最简单的方式就是查询网站的“API” 或“Developer”页面。有时也有些文档是非正式的，需要辨别？</p>
+<p>通常你会找到API 文档，叫做 API 详细说明即 <strong>specification</strong>。这里有一些（可能已经失效）的例子：</p>
+<p>The Twitter API: <code>https://dev.twitter.com/docs/api/1.1</code></p>
+<p>The New York Times Best Sellers API: <code>http://developer.nytimes.com/docs/best_sellers_api/</code></p>
+<p>这些文档看起来信息量巨大，不过主要给出了一些URL 列表，描述了通过这些URL 可以获得这样的数据。对于每个URL ，通常都会有一个页面或小节给出更多如何使用的细节，主要包括：参数<strong>parameters</strong> 和响应<strong>response</strong>。<br></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="- 参数"></a>- 参数</h3><p>参数URL 的一部分，明确你需要的是什么样的内容。例如，你正在用Twitter 提供的API 做搜索，你使用的URL 可能是这样的：</p>
+<p><code>https://api.twitter.com/1.1/search/tweets.json</code></p>
+<p>你并没有告诉Twitter 你要搜索的内容是什么，你必须像这样给出参数来进行说明，你要搜索的是“burritos”：</p>
+<p><code>https://api.twitter.com/1.1/search/tweets.json?q=burritos</code></p>
+<p>参数也可以叫做变量即variables，因为它们是可变的，它们是URL 中可变的一部分，根据你想要查询条件的不同而变化。</p>
+<p>对给定的URL 而言，有些参数是必须的，有些参数是可选的。还是以Twitter 搜索为例：</p>
+<p><code>https://api.twitter.com/1.1/search/tweets.json?q=burritos</code></p>
+<p>参数<code>q</code> 提供了一个搜索的关键词，这是一个必须的参数。如果你不提供，API 不会接受你的请求因为你并没有告诉它你在搜索什么。可选的参数相当多，比如，你可以添加一个<code>lang</code> 参数，来说明你需要返回的特定的语言。这样做，服务器会接受你的搜索请求，不过只会返回英文结果：</p>
+<p><code>https://api.twitter.com/1.1/search/tweets.json?q=burritos&amp;lang=en</code></p>
+<p>这些只是冰山一角，URL 一般都有非常多的可选参数来更准确的定义你需要的内容。文档一般会列出这些参数的默认值，这很重要，比如默认一次显示的结果页面为15，如果你需要一次显示更多，你就需要修改这个参数：</p>
+<p><code>https://api.twitter.com/1.1/search/tweets.json?q=burritos&amp;lang=en&amp;count=100</code></p>
+<p>参数规定某些事项的细节，比如：</p>
+<ul>
+<li>你一次希望得到多少结果？</li>
+<li>你希望结果以怎样的方式分类？</li>
+<li>你希望搜索的日期范围？</li>
+<li>你希望搜索的位置？</li>
+<li>你希望返回的结果是什么格式的？</li>
+</ul>
+<p>你可能想知道这些参数怎样写在URL 里，我们一会儿在<strong>GET</strong> 和 <strong>POST</strong>里讨论（结果后面就没说了）。<br></p>
+<h3 id="响应"><a href="#响应" class="headerlink" title="- 响应"></a>- 响应</h3><p>当你使用Web API 时，你提供URL （可能有一些额外的参数），你很可能得到响应，响应分为两种：</p>
+<ul>
+<li>一些数据：这正是你需要的</li>
+<li>关于你请求失败的解释 - 这可能会告诉你你缺少了某个参数，你可能超过了速率限制（后面会解释），特定的请求需要申请授权（后面会解释），或者这个请求有什么问题。</li>
+</ul>
+<p>文档会给你每一类请求可能会得到的几种响应。后面有一些例子省略。</p>
+<p>你得到的响应数据很有可能是两种格式的：XML、JSON。<br></p>
+<h3 id="GET-vs-POST"><a href="#GET-vs-POST" class="headerlink" title="- GET vs. POST"></a>- GET vs. POST</h3><p>许多URL 需要参数，你可以通过以下几种方式提供：</p>
+<ul>
+<li><p><strong>修改 URL</strong></p>
+<p>有时候URL 可能是这样展示的：<code>http://www.api.com/list/[page number]/[sort by]/[format]/</code></p>
+<p>在这种情况下，你将方括号中的参数替换为你需要的结果就可以了：<br><code>http://api.ebay.com/list/1/price/xml/ (Get page 1, sorted by price, in XML format)</code></p>
+</li>
+<li><p><strong>在URL 的末尾添加GET 参数</strong></p>
+<p>这和上一种方式差异不大，你把需要查询的条件通过 <code>GET</code> 参数列出来，每一个条件都有名字和值，像这样：<br><code>?name=value&amp;name=value&amp;name=value...</code></p>
+<p>在这个URL 里就是这样：<br><code>http://www.google.com/search?query=ducktales&amp;language=english</code></p>
+<p>你使用了两个参数：<br><code>query</code>：它的值是<code>ducktales</code>，<code>language</code>：它的值是<code>english</code>。</p>
+<p>大多数的Web API 都是通过这种方式来提交参数的，用于查询信息或获得列表。它们提供了基本的URL，你添加上附加的<code>GET</code>参数就可以了：</p>
+<p><code>http://api.yelp.com/v2/search?term=burritos&amp;location=Chicagohttps://api.foursquare.com/v2/venues/search?query=burritos&amp;near=Chicago</code></p>
+</li>
+<li><p><strong>发送POST 变量</strong></p>
+<p>如果文档写着你需要在请求中使用<code>POST</code> 方法，你可能会遇到一些问题。<code>POST</code> 用于在请求中发送隐藏的数据，数据并不在URL 的部分中列举。实际上你在浏览网页时经常使用到<code>POST</code> 方法：当你在网上购物，提交你付款信息的时候你就在使用<code>POST</code> 方法，如果没有<code>POST</code>，当你打开一个页面，你的信息直接显示在URL 上那该有多糟糕啊，像这样：<br><code>http://www.amazon.com/checkout?creditcardnumber=1234567812345678</code></p>
+<p><code>POST</code> 通常用于你不想也不需要在URL 中显示参数时，比如修改数据库中的数据。</p>
+<p>让我们想象一下没有<code>POST</code>，你把邮件地址添加到URL 的参数里：<br><code>http://mailinglist.com/add?q=john@smith.com</code></p>
+<p>当别人得到并打开这个URL，他们会不停的 re-initiate that action，这个邮件信息会不停的添加进列表，不过如果你用<code>POST</code> 来代替一切就会好很多：</p>
+<p><code>http://mailinglist.com/add</code> 你不需要重复动作一遍一遍的填表。</p>
+<p>如果你需要用到<code>POST</code>，你依然可以不写代码，不过有些复杂的是你不能直接在浏览器的地址栏上进行操作了，你需要借助一些软件比如 <a href="http://fiddler2.com/" target="_blank" rel="external">Fiddler</a>，或者浏览器的扩展插件比如<a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm" target="_blank" rel="external">Postman</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/restclient/" target="_blank" rel="external">REST Client</a>。这些工具都可以帮助你在请求中添加<code>POST</code> 参数。<br></p>
+</li>
+</ul>
+<h3 id="API-keys"><a href="#API-keys" class="headerlink" title="- API keys"></a>- API keys</h3><p>有些API 是完全开放的，这些API 你可以直接使用它的API URL，添加你需要的参数，在你的浏览器中提交请求，获得你需要的响应。</p>
+<p>不过现如今大多数的API 都需要取得一定的授权，大多数的授权形式就是API Key，一个长字符串，包含字母和数字，起到密码的作用。所以在使用API 前你需要先申请Key，不过好消息是这个操作还算便捷，很多API 拿到Key 以后仍是免费的。</p>
+<p>比如，如果你没有API Key，你通过烂番茄的API 搜索“skyfall”：</p>
+<p><code>http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=Skyfall</code></p>
+<p>你会得到的响应是账户未激活：</p>
+<p><code>{&quot;error&quot;:&quot;Account Inactive&quot;}</code></p>
+<p>当你申请到了API Key 并作为参数加入请求后，像这样：</p>
+<p><code>http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=Skyfall&amp;apikey=krw98sa2</code></p>
+<p>你就会得到你想要的结果了。<br></p>
+<h3 id="限制速率"><a href="#限制速率" class="headerlink" title="- 限制速率"></a>- 限制速率</h3><p>许多API 包括限制，限制你一个小时或一天可以提交的请求数量，以避免你的行为给服务器造成过载。对于速率的限制信息，可以查看API 文档，你会发现有些API 对一定速率以内的使用是免费的，如果你希望有更高的速率，需要额外缴费。<br></p>
+<h2 id="非程序员API-使用流程"><a href="#非程序员API-使用流程" class="headerlink" title="非程序员API 使用流程"></a>非程序员API 使用流程</h2><ol>
+<li>你需要从某个服务中获取数据，这个服务提供API 吗？哇，提供免费的API；</li>
+<li>查看API 文档，找到你需要的URL；</li>
+<li>如果需要的话，注册API Key；</li>
+<li>列出合适的参数；</li>
+<li>将包含参数的URL 通过浏览器提交，如果不work，回到步骤4；</li>
+<li>拿到数据，解析数据。你需要了解XML 和JSON。</li>
+</ol>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-05-09</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/05/09/web-api/,Echo,(译) Web API for non-programmers,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/05/02/Beautiful-Soup/" title="Beautiful Soup" class="btn">上一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
