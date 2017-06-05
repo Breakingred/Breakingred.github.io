@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>BeautifulSoup搜索文档树 · Echo</title><meta name="description" content="过滤器/搜索条件的类型
+字符串 
+查找和传入字符串完整匹配的内容
+
+正则表达式 
+通过正则表达式的match()匹配内容
+
+列表 
+将与列表中任一元素匹配的内容返回
+
+True 
+可以匹配任何值，查找到所有的tag，不会返回字符串节点
+
+方法*
+
+
+find_all(name, attrs, rec"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>BeautifulSoup搜索文档树</a></h3></div><div class="post-content"><h3 id="过滤器-搜索条件的类型"><a href="#过滤器-搜索条件的类型" class="headerlink" title="过滤器/搜索条件的类型"></a>过滤器/搜索条件的类型</h3><ul>
+<li><p><strong>字符串</strong> </p>
+<p>查找和传入字符串完整匹配的内容</p>
+</li>
+<li><p><strong>正则表达式</strong> </p>
+<p>通过正则表达式的match()匹配内容</p>
+</li>
+<li><p><strong>列表</strong> </p>
+<p>将与列表中任一元素匹配的内容返回</p>
+</li>
+<li><p><strong>True</strong> </p>
+<p>可以匹配任何值，查找到所有的tag，不会返回字符串节点</p>
+</li>
+<li><p><strong>方法*</strong></p>
+</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=""></a><br></h4><h3 id="find-all-name-attrs-recursive-string-kwargs-返回列表"><a href="#find-all-name-attrs-recursive-string-kwargs-返回列表" class="headerlink" title="find_all(name, attrs, recursive, string, **kwargs)返回列表"></a>find_all(name, attrs, recursive, string, **kwargs)返回列表</h3><ul>
+<li><p><strong>name</strong></p>
+<p>查找所有名字为<code>name</code> 的tag，该参数可以是任一类型的过滤器</p>
+</li>
+<li><p><strong>keyword</strong></p>
+<p>指定搜索参数的属性 <code>soup.find_all(href=re.compile(&#39;elsie&#39;))</code></p>
+</li>
+<li><p><strong>按CSS搜索</strong></p>
+<p>通过<code>class_</code> 参数搜索有指定CSS类型的tag <code>soup.find_all(&quot;a&quot;, class_=re.compile(&quot;itl&quot;))</code></p>
+</li>
+<li><p><strong>recursive</strong> </p>
+<p>调用tag的 <code>find_all()</code> 方法时,Beautiful Soup会检索当前tag的所有子孙节点,如果只想搜索tag的直接子节点,可以使用参数 <code>recursive=False</code> .</p>
+</li>
+<li><p><strong>string</strong></p>
+<p>搜索文档中的字符串内容 <code>soup.find_all(string=&quot;Elsie&quot;)</code></p>
+</li>
+<li><p><strong>limit</strong></p>
+<p>限制返回的结果数量<br></p>
+</li>
+<li><p><strong>\</strong>kwargs**</p>
+<p>当函数的参数不确定时，可以用<code>*args</code> （Non-keyword Variable Arguments）和<code>**kwargs</code>（keyword Variable Arguments） ，不确定的意思是可以有，有几个，也可以是没有。<code>*args</code> 可以当作可容纳多个变量组成的list，<code>**kwargs</code> 可以当作容纳多个key和value的dictionary。</p>
+</li>
+</ul>
+<h4 id="像调用-find-all-一样调用tag"><a href="#像调用-find-all-一样调用tag" class="headerlink" title="像调用 find_all() 一样调用tag"></a>像调用 find_all() 一样调用tag</h4><p><code>soup.title.find_all(string=True)</code> 等价于 <code>soup.title(string=True)</code></p>
+<p><br></p>
+<h3 id="find-name-attrs-recursive-string-kwargs-直接返回结果"><a href="#find-name-attrs-recursive-string-kwargs-直接返回结果" class="headerlink" title="find(name, attrs, recursive, string, **kwargs)直接返回结果"></a>find(name, attrs, recursive, string, **kwargs)直接返回结果</h3><p><strong>等价于将find_all 的limit 参数设置为1</strong>，唯一的区别是 <code>find_all()</code> 方法的返回结果是值包含一个元素的列表,而 <code>find()</code> 方法直接返回结果。</p>
+<p><br></p>
+<h3 id="find-parents-name-attrs-recursive-string-kwargs"><a href="#find-parents-name-attrs-recursive-string-kwargs" class="headerlink" title="find_parents(name, attrs, recursive, string, **kwargs)"></a>find_parents(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-parent-name-attrs-recursive-string-kwargs"><a href="#find-parent-name-attrs-recursive-string-kwargs" class="headerlink" title="find_parent(name, attrs, recursive, string, **kwargs)"></a>find_parent(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-next-siblings-name-attrs-recursive-string-kwargs"><a href="#find-next-siblings-name-attrs-recursive-string-kwargs" class="headerlink" title="find_next_siblings(name, attrs, recursive, string, **kwargs)"></a>find_next_siblings(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-next-sibling-name-attrs-recursive-string-kwargs"><a href="#find-next-sibling-name-attrs-recursive-string-kwargs" class="headerlink" title="find_next_sibling(name, attrs, recursive, string, **kwargs)"></a>find_next_sibling(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-previous-siblings-name-attrs-recursive-string-kwargs"><a href="#find-previous-siblings-name-attrs-recursive-string-kwargs" class="headerlink" title="find_previous_siblings(name, attrs, recursive, string, **kwargs)"></a>find_previous_siblings(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-previous-sibling-name-attrs-recursive-string-kwargs"><a href="#find-previous-sibling-name-attrs-recursive-string-kwargs" class="headerlink" title="find_previous_sibling(name, attrs, recursive, string, **kwargs)"></a>find_previous_sibling(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-all-next-name-attrs-recursive-string-kwargs"><a href="#find-all-next-name-attrs-recursive-string-kwargs" class="headerlink" title="find_all_next(name, attrs, recursive, string, **kwargs)"></a>find_all_next(name, attrs, recursive, string, **kwargs)<br></h3><ul>
+<li><strong>返回所有当前tag之后符合条件的节点（包括tag 和字符串）</strong></li>
+</ul>
+<h3 id="find-next-name-attrs-recursive-string-kwargs"><a href="#find-next-name-attrs-recursive-string-kwargs" class="headerlink" title="find_next(name, attrs, recursive, string, **kwargs)"></a>find_next(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-all-previous-name-attrs-recursive-string-kwargs"><a href="#find-all-previous-name-attrs-recursive-string-kwargs" class="headerlink" title="find_all_previous(name, attrs, recursive, string, **kwargs)"></a>find_all_previous(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="find-previous-name-attrs-recursive-string-kwargs"><a href="#find-previous-name-attrs-recursive-string-kwargs" class="headerlink" title="find_previous(name, attrs, recursive, string, **kwargs)"></a>find_previous(name, attrs, recursive, string, **kwargs)<br></h3><h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><blockquote>
+<p>Beautiful Soup支持大部分的CSS选择器 , 在 <code>Tag</code> 或 <code>BeautifulSoup</code> 对象的 <code>.select()</code> 方法中传入字符串参数, 即可使用CSS选择器的语法找到tag</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-05-11</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/05/11/BeautifulSoup搜索文档树/,Echo,BeautifulSoup搜索文档树,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/05/11/BeautifulSoup遍历文档树/" title="BeautifulSoup遍历文档树" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/06/05/Anaconda/" title="Anaconda" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
