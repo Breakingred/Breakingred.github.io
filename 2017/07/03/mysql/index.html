@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>mysql · Echo</title><meta name="description" content="查询套路 select+ where+ group by+ having+ order by：select 选取
+select 列名 from 表名
+select * from 表名
+
+where 条件
+select * from where 条件（列 运算符 值）
+select * from or"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>mysql</a></h3></div><div class="post-content"><h2 id="查询套路-select-where-group-by-having-order-by："><a href="#查询套路-select-where-group-by-having-order-by：" class="headerlink" title="查询套路 select+ where+ group by+ having+ order by："></a>查询套路 select+ where+ group by+ having+ order by：</h2><h4 id="select-选取"><a href="#select-选取" class="headerlink" title="select 选取"></a>select 选取</h4><ul>
+<li>select 列名 from 表名</li>
+<li>select * from 表名</li>
+</ul>
+<h4 id="where-条件"><a href="#where-条件" class="headerlink" title="where 条件"></a>where 条件</h4><ul>
+<li>select * from where 条件（列 运算符 值）<ul>
+<li>select * from orders where customer=’google’</li>
+</ul>
+</li>
+</ul>
+<h4 id="group-by-结合合计函数，对结果集分组"><a href="#group-by-结合合计函数，对结果集分组" class="headerlink" title="group by 结合合计函数，对结果集分组"></a>group by 结合合计函数，对结果集分组</h4><ul>
+<li>select 列名,合计函数（列名） from 表名 where 条件 group by 列名<ul>
+<li>select customer,sum(orderprice) from orders group by customer</li>
+</ul>
+</li>
+</ul>
+<h4 id="having-对where的补充，因为where无法与合计函数一起使用"><a href="#having-对where的补充，因为where无法与合计函数一起使用" class="headerlink" title="having 对where的补充，因为where无法与合计函数一起使用"></a>having 对where的补充，因为where无法与合计函数一起使用</h4><ul>
+<li>select 列名,合计函数（列名） from 表名 where 条件 group by 列名 having 条件（合计函数（列名） 运算符 值）<ul>
+<li>select customer,sum(orderprice) from orders where customer=’google’ group by customer having sum(orderprice)&lt;2000</li>
+</ul>
+</li>
+</ul>
+<h4 id="order-by-对结果集排序"><a href="#order-by-对结果集排序" class="headerlink" title="order by 对结果集排序"></a>order by 对结果集排序</h4><ul>
+<li>默认升序，降序为DESC<ul>
+<li>select * from orders order by customer,orderdate desc</li>
+</ul>
+</li>
+</ul>
+<h2 id="一些辅助查询的关键字"><a href="#一些辅助查询的关键字" class="headerlink" title="一些辅助查询的关键字"></a>一些辅助查询的关键字</h2><h4 id="and-amp-or-在where中把两个或多个条件结合起来"><a href="#and-amp-or-在where中把两个或多个条件结合起来" class="headerlink" title="and &amp; or 在where中把两个或多个条件结合起来"></a>and &amp; or 在where中把两个或多个条件结合起来</h4><h4 id="distinct-返回唯一值"><a href="#distinct-返回唯一值" class="headerlink" title="distinct 返回唯一值"></a>distinct 返回唯一值</h4><ul>
+<li>select distinct 列名称 from 表名称</li>
+</ul>
+<h4 id="limit-规定要返回的记录的数目"><a href="#limit-规定要返回的记录的数目" class="headerlink" title="limit 规定要返回的记录的数目"></a>limit 规定要返回的记录的数目</h4><ul>
+<li>select 列名称 from 表名称 limit 数量</li>
+</ul>
+<h4 id="like-通配符-在-where中搜索列中的指定模式"><a href="#like-通配符-在-where中搜索列中的指定模式" class="headerlink" title="like+通配符 在 where中搜索列中的指定模式"></a>like+通配符 在 where中搜索列中的指定模式</h4><ul>
+<li>select 列名称 from 表名称 where 列名 like 模式<ul>
+<li>select * from orders where customer=’_G%’<ul>
+<li>“%” 代替一个或多个字符</li>
+<li>“_” 仅代替一个字符</li>
+<li>[charlist] 字符列中的任何单一字符</li>
+<li>[!charlist] 不在字符列中的任何单一字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="in-在where中规定多个值"><a href="#in-在where中规定多个值" class="headerlink" title="in 在where中规定多个值"></a>in 在where中规定多个值</h4><ul>
+<li>select 列名称 from 表名称 where 列名 in (值1,值2…)</li>
+</ul>
+<h4 id="between…and-在where中选取介于两个值之间的数据"><a href="#between…and-在where中选取介于两个值之间的数据" class="headerlink" title="between…and 在where中选取介于两个值之间的数据"></a>between…and 在where中选取介于两个值之间的数据</h4><ul>
+<li>select 列名称 from 表名称 where 列名 between 值1 and 值2</li>
+</ul>
+<h4 id="union-all-合并两个或多个-SELECT-语句的结果集"><a href="#union-all-合并两个或多个-SELECT-语句的结果集" class="headerlink" title="union (all)合并两个或多个 SELECT 语句的结果集"></a>union (all)合并两个或多个 SELECT 语句的结果集</h4><ul>
+<li>union内部的 select语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条select语句中的列的顺序必须相同</li>
+<li>union默认选取不重复的值，union all允许重复的值</li>
+<li>union结果集中的列名总是等于union中第一个select语句中的列名</li>
+</ul>
+<h2 id="表连接join-on"><a href="#表连接join-on" class="headerlink" title="表连接join on"></a>表连接join on</h2><h4 id="Inner-join"><a href="#Inner-join" class="headerlink" title="(Inner) join"></a>(Inner) join</h4><ul>
+<li>如果表中有至少一个匹配，则返回行</li>
+</ul>
+<ul>
+<li>select 列名 from 表名1 inner join 表名2 on 表名1.列名 = 表名2.列名<ul>
+<li>select c.name,o.orderid from customer as c inner join orders as o on c.id = o.customerid</li>
+</ul>
+</li>
+</ul>
+<h4 id="left-join"><a href="#left-join" class="headerlink" title="left join"></a>left join</h4><ul>
+<li>即使右表中没有匹配，也从左表返回所有的行</li>
+</ul>
+<h4 id="right-join"><a href="#right-join" class="headerlink" title="right join"></a>right join</h4><ul>
+<li>即使左表中没有匹配，也从右表返回所有的行</li>
+</ul>
+<h4 id="full-join"><a href="#full-join" class="headerlink" title="full join"></a>full join</h4><ul>
+<li>只要其中一个表中存在匹配，就返回行</li>
+</ul>
+<p>#### </p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-03</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/07/03/mysql/,Echo,mysql,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/06/29/什么是云计算/" title="什么是云计算" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
