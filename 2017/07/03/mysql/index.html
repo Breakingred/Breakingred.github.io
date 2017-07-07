@@ -32,6 +32,7 @@ select * from or"><meta name="keywords" content="Echo"><meta content="width=devi
 </ul>
 </li>
 </ul>
+<p><br></p>
 <h2 id="一些辅助查询的关键字"><a href="#一些辅助查询的关键字" class="headerlink" title="一些辅助查询的关键字"></a>一些辅助查询的关键字</h2><h4 id="and-amp-or-在where中把两个或多个条件结合起来"><a href="#and-amp-or-在where中把两个或多个条件结合起来" class="headerlink" title="and &amp; or 在where中把两个或多个条件结合起来"></a>and &amp; or 在where中把两个或多个条件结合起来</h4><h4 id="distinct-返回唯一值"><a href="#distinct-返回唯一值" class="headerlink" title="distinct 返回唯一值"></a>distinct 返回唯一值</h4><ul>
 <li>select distinct 列名称 from 表名称</li>
 </ul>
@@ -40,7 +41,7 @@ select * from or"><meta name="keywords" content="Echo"><meta content="width=devi
 </ul>
 <h4 id="like-通配符-在-where中搜索列中的指定模式"><a href="#like-通配符-在-where中搜索列中的指定模式" class="headerlink" title="like+通配符 在 where中搜索列中的指定模式"></a>like+通配符 在 where中搜索列中的指定模式</h4><ul>
 <li>select 列名称 from 表名称 where 列名 like 模式<ul>
-<li>select * from orders where customer=’_G%’<ul>
+<li>select * from orders where customer like ‘_G%’<ul>
 <li>“%” 代替一个或多个字符</li>
 <li>“_” 仅代替一个字符</li>
 <li>[charlist] 字符列中的任何单一字符</li>
@@ -61,6 +62,13 @@ select * from or"><meta name="keywords" content="Echo"><meta content="width=devi
 <li>union默认选取不重复的值，union all允许重复的值</li>
 <li>union结果集中的列名总是等于union中第一个select语句中的列名</li>
 </ul>
+<h4 id="select-into-从旧表创建新表（多用于表备份）"><a href="#select-into-从旧表创建新表（多用于表备份）" class="headerlink" title="select into 从旧表创建新表（多用于表备份）"></a>select into 从旧表创建新表（多用于表备份）</h4><ul>
+<li>select 列1… into 新表名 from 旧表名 where 条件</li>
+</ul>
+<ul>
+<li>SELECT Persons.LastName,Orders.OrderNo<br>INTO Persons_Order_Backup<br>FROM Persons<br>INNER JOIN Orders<br>ON Persons.Id_P=Orders.Id_P</li>
+</ul>
+<p><br></p>
 <h2 id="表连接join-on"><a href="#表连接join-on" class="headerlink" title="表连接join on"></a>表连接join on</h2><h4 id="Inner-join"><a href="#Inner-join" class="headerlink" title="(Inner) join"></a>(Inner) join</h4><ul>
 <li>如果表中有至少一个匹配，则返回行</li>
 </ul>
@@ -79,5 +87,111 @@ select * from or"><meta name="keywords" content="Echo"><meta content="width=devi
 <h4 id="full-join"><a href="#full-join" class="headerlink" title="full join"></a>full join</h4><ul>
 <li>只要其中一个表中存在匹配，就返回行</li>
 </ul>
-<p>#### </p>
+<p><br></p>
+<h2 id="创建create"><a href="#创建create" class="headerlink" title="创建create"></a>创建create</h2><h4 id="create-database-创建数据库"><a href="#create-database-创建数据库" class="headerlink" title="create database 创建数据库"></a>create database 创建数据库</h4><ul>
+<li>create database 数据库名称</li>
+</ul>
+<h4 id="create-table-创建数据库中的表"><a href="#create-table-创建数据库中的表" class="headerlink" title="create table 创建数据库中的表"></a>create table 创建数据库中的表</h4><ul>
+<li>CREATE TABLE 表名称<br>(<br>列名称1 数据类型 可选是否有约束,<br>列名称2 数据类型 可选是否有约束,<br>列名称3 数据类型 可选是否有约束,<br>….<br>)<ul>
+<li>CREATE TABLE Persons<br>(<br>Id_P int not null,<br>LastName varchar(255),<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="插入数据-insert-into"><a href="#插入数据-insert-into" class="headerlink" title="插入数据 insert into"></a>插入数据 insert into</h2><ul>
+<li>INSERT INTO 表名称 VALUES (值1, 值2,….)</li>
+<li>INSERT INTO table_name (列1, 列2,…) VALUES (值1, 值2,….)<ul>
+<li>INSERT INTO Persons (LastName, Address) VALUES (‘Wilson’, ‘Champs-Elysees’)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="修改数据-update-set"><a href="#修改数据-update-set" class="headerlink" title="修改数据 update set"></a>修改数据 update set</h2><ul>
+<li>UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值<ul>
+<li>UPDATE Person SET FirstName = ‘Fred’ WHERE LastName = ‘Wilson’ </li>
+</ul>
+</li>
+<li>更改一行中的某几列<ul>
+<li>UPDATE Person SET Address = ‘Zhongshan 23’, City = ‘Nanjing’<br>WHERE LastName = ‘Wilson’</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="删除表中的数据-delete-from"><a href="#删除表中的数据-delete-from" class="headerlink" title="删除表中的数据 delete from"></a>删除表中的数据 delete from</h2><ul>
+<li>删除某行 DELETE FROM 表名称 WHERE 列名称 = 值</li>
+<li>删除所有行 DELETE FROM 表名称</li>
+</ul>
+<p><br></p>
+<h2 id="约束-限制加入表的数据类型"><a href="#约束-限制加入表的数据类型" class="headerlink" title="约束-限制加入表的数据类型"></a>约束-限制加入表的数据类型</h2><p>可以在创建表时规定约束（通过 CREATE TABLE 语句）或者在表创建之后也可以（通过 ALTER TABLE 语句）</p>
+<p>主要讨论以下几种约束：</p>
+<h4 id="NOT-NULL-列不接受空值"><a href="#NOT-NULL-列不接受空值" class="headerlink" title="NOT NULL 列不接受空值"></a>NOT NULL 列不接受空值</h4><ul>
+<li>CREATE TABLE Persons<br>(<br>Id_P int <strong>NOT NULL</strong>,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255)<br>)</li>
+</ul>
+<p><br></p>
+<h4 id="UNIQUE-唯一值"><a href="#UNIQUE-唯一值" class="headerlink" title="UNIQUE 唯一值"></a>UNIQUE 唯一值</h4><ul>
+<li>UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证</li>
+<li>PRIMARY KEY 拥有自动定义的 UNIQUE 约束</li>
+</ul>
+<ul>
+<li>每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束</li>
+<li>定义单列unique<ul>
+<li>CREATE TABLE Persons<br>(<br>Id_P int NOT NULL,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br><strong>UNIQUE (Id_P)</strong><br>)</li>
+</ul>
+</li>
+<li>如果需要命名 UNIQUE 约束，以及为多个列定义 UNIQUE 约束<ul>
+<li>CREATE TABLE Persons<br>(<br>Id_P int NOT NULL,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br><strong>CONSTRAINT uc_PersonID UNIQUE (Id_P,LastName)</strong><br>)</li>
+</ul>
+</li>
+<li>表已存在时添加unique<ul>
+<li>ALTER TABLE Persons<br>ADD UNIQUE (Id_P)</li>
+<li>ALTER TABLE Persons<br>ADD CONSTRAINT uc_PersonID UNIQUE (Id_P,LastName)</li>
+</ul>
+</li>
+<li>撤销unique<ul>
+<li>MySQL <ul>
+<li>ALTER TABLE Persons<br><strong>DROP INDEX uc_PersonID</strong></li>
+</ul>
+</li>
+<li>SQL Server / Oracle / MS Access:<ul>
+<li>ALTER TABLE Persons<br>DROP CONSTRAINT uc_PersonID</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="PRIMARY-KEY-主键"><a href="#PRIMARY-KEY-主键" class="headerlink" title="PRIMARY KEY 主键"></a>PRIMARY KEY 主键</h4><ul>
+<li>PRIMARY KEY 约束唯一标识数据库表中的每条记录</li>
+<li>每个表都应该有一个主键，并且每个表只能有一个主键</li>
+<li>在创建表时指定主键<ul>
+<li>(<br>Id_P int NOT NULL,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br><strong>PRIMARY KEY (Id_P)</strong><br>)</li>
+</ul>
+</li>
+<li>定义多列<ul>
+<li>CREATE TABLE Persons<br>(<br>Id_P int NOT NULL,<br>LastName varchar(255) NOT NULL,<br>FirstName varchar(255),<br>Address varchar(255),<br>City varchar(255),<br><strong>CONSTRAINT pk_PersonID PRIMARY KEY (Id_P,LastName)</strong><br>)</li>
+</ul>
+</li>
+<li>添加<ul>
+<li>ALTER TABLE Persons<br><strong>ADD CONSTRAINT pk_PersonID PRIMARY KEY (Id_P,LastName)</strong></li>
+</ul>
+</li>
+<li>撤销<ul>
+<li>ALTER TABLE Persons<br><strong>DROP PRIMARY KEY</strong></li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="Foreign-Key-REFERENCES-外键"><a href="#Foreign-Key-REFERENCES-外键" class="headerlink" title="Foreign Key REFERENCES 外键"></a>Foreign Key REFERENCES 外键</h4><ul>
+<li>用于预防破坏表之间连接的动作</li>
+<li>防止非法数据插入外键列，因为它必须是它指向的那个表中的值之一</li>
+<li>创建表时定义<ul>
+<li>CREATE TABLE Orders<br>(<br>Id_O int NOT NULL,<br>OrderNo int NOT NULL,<br>Id_P int,<br>PRIMARY KEY (Id_O),<br>FOREIGN KEY (Id_P) REFERENCES Persons(Id_P)<br>)</li>
+</ul>
+</li>
+<li>需要定义多列或命名<ul>
+<li>CREATE TABLE Orders<br>(<br>Id_O int NOT NULL,<br>OrderNo int NOT NULL,<br>Id_P int,<br>PRIMARY KEY (Id_O),<br>CONSTRAINT fk_PerOrders FOREIGN KEY (Id_P)<br>REFERENCES Persons(Id_P)<br>)</li>
+</ul>
+</li>
+<li>撤销同主键</li>
+</ul>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-03</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/07/03/mysql/,Echo,mysql,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/06/29/什么是云计算/" title="什么是云计算" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
