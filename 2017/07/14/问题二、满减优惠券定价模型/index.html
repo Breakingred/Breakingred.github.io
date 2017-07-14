@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>问题二、满减优惠券定价模型 · Echo</title><meta name="description" content="问题二：满减优惠券定价模型一、问题背景优惠券是商家常用的促销手段，价格敏感度高的用户会耐心保存收集优惠券且不忘记使用，价格敏感度低的用户对使用优惠券感到麻烦。
+现在需要针对这两类用户分别设计优惠券，使得商品分为两种价格在两类消费者中进行分配。即向不同的用户群体投放不同的优惠券，以达到销售额最大化。
+"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>问题二、满减优惠券定价模型</a></h3></div><div class="post-content"><h1 id="问题二：满减优惠券定价模型"><a href="#问题二：满减优惠券定价模型" class="headerlink" title="问题二：满减优惠券定价模型"></a>问题二：满减优惠券定价模型</h1><h2 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h2><p>优惠券是商家常用的促销手段，价格敏感度高的用户会耐心保存收集优惠券且不忘记使用，价格敏感度低的用户对使用优惠券感到麻烦。</p>
+<p>现在需要针对这两类用户分别设计优惠券，使得商品分为两种价格在两类消费者中进行分配。即向不同的用户群体投放不同的优惠券，以达到销售额最大化。</p>
+<p><br></p>
+<h2 id="二、整体思路："><a href="#二、整体思路：" class="headerlink" title="二、整体思路："></a>二、整体思路：</h2><ol>
+<li>找出影响优惠券销售额的因素，把这些因素用函数表达式表达出来，建立出定价模型</li>
+<li>研究计算方法，用遗传算法作为模型的求解方法</li>
+<li>最后仿真模拟，用几组可行数据对模型进行检验，证明模型和算法的可行性</li>
+</ol>
+<p><br></p>
+<h2 id="三、建模前的假设-设定"><a href="#三、建模前的假设-设定" class="headerlink" title="三、建模前的假设/设定"></a>三、建模前的假设/设定</h2><ol>
+<li>优惠券的种类有很多，我们这里研究的是指购物时用户消费达到一定额度即可使用来抵扣现金的优惠券，即满减优惠券；</li>
+<li>优惠券定价问题包括使用门槛、面额，本问题中我们不对门槛进行讨论，只关注面额，我们将根据历史数据中用户平均消费金额来选择一个特定的门槛；</li>
+<li>已完成用户细分，用户按照对价格是否敏感分为两类，其中对价格敏的用户数量为a；</li>
+<li>为简化表达式书写工作量，假定对价格不敏感的用户不发放优惠券，实际情况中如果发放，引入一个新的面额变量，表达过程与本模型一致即可；</li>
+<li>假定每个得到优惠券的用户只能参加一次满减活动；</li>
+<li>假定每个得到优惠券的用户都参加了满减活动。</li>
+</ol>
+<p><br></p>
+<h2 id="四、建模"><a href="#四、建模" class="headerlink" title="四、建模"></a>四、建模</h2><h3 id="确定参数："><a href="#确定参数：" class="headerlink" title="确定参数："></a>确定参数：</h3><ol>
+<li>x 优惠面额</li>
+<li>P 当前价格 </li>
+<li>Pmax 销量为0时的价格即最高价格 - 可以通过观察历史数据得到</li>
+<li>P1 使用1类优惠券购买时的实际价格（如果需要扩展到多类优惠券，可引入P2）</li>
+<li>Q 不使用优惠券时购买商品的用户即商品销量</li>
+<li>Q1 使用1类优惠券购买的用户数</li>
+<li>△Q=Q1-Q 用优惠券购买的用户数</li>
+<li>S 总销售额</li>
+<li>A 计算销量的参数</li>
+<li>a 对价格敏的用户数量</li>
+</ol>
+<p><br></p>
+<h3 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h3><p>1、 没有引入优惠券时的销量：</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/7f0488e9ly1fhiuccbecjj208s027t8h.jpg" alt=""></p>
+<p>2、部分用户使用了优惠券，对这一部分用户而言，商品的实际价格降低了：</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/7f0488e9ly1fhiuchihebj205p024741.jpg" alt=""></p>
+<p>带入1、中的公式：</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhiucwk7cyj20ay02ja9u.jpg" alt=""></p>
+<p>这部分由于降价被吸引来的购买量可以表示如下：</p>
+<p><img src="http://wx2.sinaimg.cn/mw690/7f0488e9ly1fhiudqbzirj20gr05ndfq.jpg" alt=""></p>
+<h3 id="约束条件"><a href="#约束条件" class="headerlink" title="约束条件"></a>约束条件</h3><p>由 p1&gt;=0 可得出 x 受到以下约束： </p>
+<p><img src="http://wx4.sinaimg.cn/mw690/7f0488e9ly1fhiud86et5j20cu027gle.jpg" alt=""></p>
+<h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p>销售额 = 没有使用优惠券的销售额 + 使用优惠券的销售额增量 </p>
+<p>用 x 表达 S： </p>
+<p><img src="http://wx3.sinaimg.cn/mw690/7f0488e9ly1fhiue184unj20ge086weg.jpg" alt=""></p>
+<p><br></p>
+<h2 id="四、求解目标函数-遗传算法（学习中）"><a href="#四、求解目标函数-遗传算法（学习中）" class="headerlink" title="四、求解目标函数-遗传算法（学习中）"></a>四、求解目标函数-遗传算法（学习中）</h2></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-14</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/07/14/问题二、满减优惠券定价模型/,Echo,问题二、满减优惠券定价模型,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/07/14/问题一、用户细分-价格敏感度/" title="问题一、用户细分-价格敏感度" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

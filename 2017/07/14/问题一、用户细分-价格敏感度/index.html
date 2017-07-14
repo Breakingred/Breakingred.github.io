@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Echo"><title>问题一、用户细分-价格敏感度 · Echo</title><meta name="description" content="问题一：用户细分-价格敏感度一、分析目标将加油站客户进行细分，了解不同群体用户的消费习惯和特征，针对不同群体用户进行精准营销。
+
+二、分析方法无监督学习-聚类分析
+聚类分析：顾名思义是一种分类的多元统计分析方法。按照个体或样品(individuals, objects or subjects)的特征"><meta name="keywords" content="Echo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h5 title=""><a href="/">Echo</a></h5></div></div><ul class="social-links"><li><a href="https://twitter.com/111111111111111111111111111111111111111None"><i class="fa fa-twitter"></i></a></li><li><a href="http://instagram.com/111111111111111111111111111111111111111None"><i class="fa fa-instagram"></i></a></li><li><a href="/111111111111111111111111111111111111111None"><i class="fa fa-rss"></i></a></li><li><a href="http://weibo.com/111111111111111111111111111111111111111None"><i class="fa fa-weibo"></i></a></li></ul></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://wx1.sinaimg.cn/large/7f0488e9ly1fbwhwy85xmj20h80gagoe.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>问题一、用户细分-价格敏感度</a></h3></div><div class="post-content"><h1 id="问题一：用户细分-价格敏感度"><a href="#问题一：用户细分-价格敏感度" class="headerlink" title="问题一：用户细分-价格敏感度"></a>问题一：用户细分-价格敏感度</h1><h2 id="一、分析目标"><a href="#一、分析目标" class="headerlink" title="一、分析目标"></a>一、分析目标</h2><p>将加油站客户进行细分，了解不同群体用户的消费习惯和特征，针对不同群体用户进行精准营销。</p>
+<p><br></p>
+<h2 id="二、分析方法"><a href="#二、分析方法" class="headerlink" title="二、分析方法"></a>二、分析方法</h2><h3 id="无监督学习-聚类分析"><a href="#无监督学习-聚类分析" class="headerlink" title="无监督学习-聚类分析"></a>无监督学习-聚类分析</h3><blockquote>
+<p>聚类分析：顾名思义是一种分类的多元统计分析方法。按照个体或样品(individuals, objects or subjects)的特征将它们分类，使同一类别内的个体具有尽可能高的同质性(homogeneity)，而类别之间则应具有尽可能高的异质性(heterogeneity)。 </p>
+</blockquote>
+<p>用户细分总是和聚类分析关联在一起。用户细分的关键问题是找出顾客的特征，一般可从顾客自然特征和消费行为入手。可以用单一变量进行划段分组，比如，以消费频率变量细分，即将该变量划分为几个段，高频客户、中频客户、低频客户；还可以用多个变量交叉分组，比如用性别和收入两个变量，进行交叉细分。事实是，我们总是希望考虑多方面特征进行聚类，这样基于多方面综合特征的客户细分比单个特征的细分更有意义。</p>
+<p><br></p>
+<h3 id="常用的聚类分析算法：K-Means"><a href="#常用的聚类分析算法：K-Means" class="headerlink" title="常用的聚类分析算法：K-Means"></a>常用的聚类分析算法：K-Means</h3><h4 id="算法步骤："><a href="#算法步骤：" class="headerlink" title="算法步骤："></a>算法步骤：</h4><ol>
+<li>分配：初步指定聚类中心，将各个数据点分配至距离最近的聚类中；</li>
+<li>优化：移动聚类中心，使得数据点到聚类中心的距离总和最小（有n个特征时，K-Means计算两点在欧几里得空间下的距离——数学空间可以被扩展来应用于任何有限维度，而这种空间叫做n维欧几里得空间）；</li>
+<li>迭代直至聚类中心产生最优结果。</li>
+</ol>
+<p><br></p>
+<h4 id="Python-scikit-learn-参数设置："><a href="#Python-scikit-learn-参数设置：" class="headerlink" title="Python - scikit-learn 参数设置："></a>Python - scikit-learn 参数设置：</h4><ol>
+<li>n_clusters = 8 最重要的参数，确定将数据分为多少类，可能随时进行调整；</li>
+<li>max_iter = 300 确定进行多少次算法迭代；</li>
+<li>n_init = 10 算法初始化的次数，即重新开始聚类，参考爬山原理，聚类结果非常依赖初始聚类中心的位置，因为第一次指定的聚类中心是随机的，很大程度上会影响聚类结果。</li>
+</ol>
+<p><br></p>
+<h4 id="算法局限性："><a href="#算法局限性：" class="headerlink" title="算法局限性："></a>算法局限性：</h4><p>受到初始聚类中心的影响，可能形成局部最小值，造成一种糟糕的聚类结果。</p>
+<p><br></p>
+<h3 id="其他聚类分析算法："><a href="#其他聚类分析算法：" class="headerlink" title="其他聚类分析算法："></a>其他聚类分析算法：</h3><h4 id="1-SLC-单连锁聚类"><a href="#1-SLC-单连锁聚类" class="headerlink" title="1. SLC 单连锁聚类"></a>1. SLC 单连锁聚类</h4><h5 id="算法步骤：-1"><a href="#算法步骤：-1" class="headerlink" title="算法步骤："></a>算法步骤：</h5><ol>
+<li>把每一个数据点看做一个聚类，所以初始聚类数量为数据个数n；</li>
+<li>定义两个聚类之间的距离为两个聚类中最接近的两个点的距离；</li>
+<li>将距离最近的两个聚类合并为一个大的聚类；</li>
+<li>重复合并n-k次，k为最终形成的聚类数量，k是一开始需要输入的变量。</li>
+</ol>
+<h5 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h5><ol>
+<li>具有确定性，总会得到相同的结果；</li>
+<li>运行时间短。</li>
+</ol>
+<p><br></p>
+<h4 id="2-软聚类"><a href="#2-软聚类" class="headerlink" title="2. 软聚类"></a>2. 软聚类</h4><p>允许数据点被共享。</p>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h4><h2 id="三、数据处理"><a href="#三、数据处理" class="headerlink" title="三、数据处理"></a>三、数据处理</h2><h3 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h3><ol>
+<li>为简化问题，油型号不考虑，假设用户购买的是同种成品油</li>
+</ol>
+<p><br></p>
+<h3 id="获取业务数据"><a href="#获取业务数据" class="headerlink" title="获取业务数据"></a>获取业务数据</h3><p>由于缺少真实数据集，这里模拟用户在加油站的消费记录，记录字段包括：</p>
+<p>{ 消费记录ID、消费时间、用户ID、用户昵称、加油单价、加油升数、是否参加活动、是否在便利店购物、便利店购物消费金额、总金额、活动优惠金额、实际支付金额、活动补贴率、储值卡余额 }</p>
+<p><br></p>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>1、剔除与聚类无关的特征，如消费记录ID、消费时间、用户昵称、加油升数、便利店购物消费金额、储值卡余额；</p>
+<p>2、计算出其他有价值的变量，最终确定用于聚类的特征包括：</p>
+<ul>
+<li><strong>同一ID用户加油单价均值</strong>；</li>
+<li><strong>参加活动占比</strong>（该用户参加活动的记录占其总记录的比率）；</li>
+<li><strong>便利店购物次数占比</strong>（该用户在加油站便利店购物次数占总记录的比率）；</li>
+<li><strong>补贴率均值</strong>（活动优惠金额/总金额）；</li>
+</ul>
+<p>3、由于缺少真实数据集，这里用随机数方法随机生成以上数据；</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhipj6iqbdj20pm072t9v.jpg" alt=""></p>
+<p>4、查看各个特征的描述统计量，剔除异常值；</p>
+<p>5、分析各个特征间是否有强线性相关性，如有需要考虑衍生出新特征。</p>
+<p><br></p>
+<h4 id="注：避免维数灾难"><a href="#注：避免维数灾难" class="headerlink" title="注：避免维数灾难"></a>注：避免维数灾难</h4><p>所需数据量会根据特征数量以指数速度增长，所以特征越少越好，需要我们简化问题，利用算法从一堆特征中选择真正对我们问题有帮助的特征，可以使用以下两种方法进行特征选择：</p>
+<ol>
+<li>过滤（如决策树）：具备一系列的特征输入，通过某种可以将标准最大化的算法运行这些输入，然后会输出较少的特征，将这些特征传递给分类算法，即流程先对特征进行过滤，再传递给学习算法，缺点在于缺少反馈，就将特征移除了；优势在于相对封装方法，运行较快；</li>
+<li>封装：即对特征的搜索是围绕着学习算法展开的，特征是否移除的标准是在学习器里去判断的，运行很慢，每次尝试针对特定的特征子集运算时，都必须运行学习算法。</li>
+</ol>
+<p><br></p>
+<h3 id="特征缩放-数据标准化"><a href="#特征缩放-数据标准化" class="headerlink" title="特征缩放/数据标准化"></a>特征缩放/数据标准化</h3><p>有的特征取值的跨度大，分析前要对数据进行标准化处理，即特征缩放。比如这里需要对加油单价均值进行标准化，可以采用z-score、最大最小规范化等方法。</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhj5jv8rluj20re0bcwg3.jpg" alt=""></p>
+<h2 id="四、数据分析"><a href="#四、数据分析" class="headerlink" title="四、数据分析"></a>四、数据分析</h2><h3 id="查看聚类结果"><a href="#查看聚类结果" class="headerlink" title="查看聚类结果"></a>查看聚类结果</h3><p>1、初始类中心</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhj5jyj8rgj20ho0cqdh7.jpg" alt=""></p>
+<p>2、迭代至各个中心的变化趋于0</p>
+<p><img src="http://wx3.sinaimg.cn/mw690/7f0488e9ly1fhj5k2lz42j20ci0n4jtk.jpg" alt=""></p>
+<p>3、最终聚类中心</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhj5k5u6rqj20go0c4dh5.jpg" alt=""></p>
+<p>4、查看聚类数据</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/7f0488e9ly1fhj5nn32l5j20bi0720t7.jpg" alt=""></p>
+<h3 id="结论-描述类别特征"><a href="#结论-描述类别特征" class="headerlink" title="结论-描述类别特征"></a>结论-描述类别特征</h3><p>可以根据用户历史消费记录将用户分为两类：</p>
+<p>第1类用户平均加油单价低、参加活动占比高、补贴率均值高、很少在便利店购物，属于价格敏感度高的用户，在964个用户中有337个这样的用户；</p>
+<p>另一类用户与之相反，价格敏感度较低。</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-14</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://yoursite.com/2017/07/14/问题一、用户细分-价格敏感度/,Echo,问题一、用户细分-价格敏感度,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/07/14/问题二、满减优惠券定价模型/" title="问题二、满减优惠券定价模型" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/07/14/SAS-区域经济发展与平均工资水平的关系分析/" title="（SAS）区域经济发展与平均工资水平的关系分析" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
